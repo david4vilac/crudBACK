@@ -12,13 +12,15 @@ public class Producto {
     private int id;
     private String nombre;
     private float precio;
+    private String image;
 
     public Producto() {
     }
 
-    public Producto(String nombre, float precio) {
+    public Producto(String nombre, float precio, String image) {
         this.nombre = nombre;
         this.precio = precio;
+        this.image = image;
     }
 
     public int getId() {
@@ -43,5 +45,13 @@ public class Producto {
 
     public void setPrecio(float precio) {
         this.precio = precio;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

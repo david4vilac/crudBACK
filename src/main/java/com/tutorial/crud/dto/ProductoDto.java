@@ -9,13 +9,15 @@ public class ProductoDto {
     private String nombre;
     @Min(0)
     private Float precio;
+    private String image;
 
     public ProductoDto() {
     }
 
-    public ProductoDto(@NotBlank String nombre, @Min(0) Float precio) {
+    public ProductoDto(@NotBlank String nombre, @Min(0) Float precio, String image) {
         this.nombre = nombre;
         this.precio = precio;
+        this.image = image;
     }
 
     public String getNombre() {
@@ -32,5 +34,13 @@ public class ProductoDto {
 
     public void setPrecio(Float precio) {
         this.precio = precio;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

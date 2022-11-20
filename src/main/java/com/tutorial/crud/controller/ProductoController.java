@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/producto")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 public class ProductoController {
 
     @Autowired
@@ -50,7 +50,7 @@ public class ProductoController {
             return new ResponseEntity(new Mensaje("el precio debe ser mayor que 0"), HttpStatus.BAD_REQUEST);
         if(productoService.existsByNombre(productoDto.getNombre()))
             return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        Producto producto = new Producto(productoDto.getNombre(), productoDto.getPrecio());
+        Producto producto = new Producto(productoDto.getNombre(), productoDto.getPrecio(), productoDto.getImage());
         productoService.save(producto);
         return new ResponseEntity(new Mensaje("producto creado"), HttpStatus.OK);
     }
@@ -69,6 +69,7 @@ public class ProductoController {
         Producto producto = productoService.getOne(id).get();
         producto.setNombre(productoDto.getNombre());
         producto.setPrecio(productoDto.getPrecio());
+        producto.setImage(productoDto.getImage());
         productoService.save(producto);
         return new ResponseEntity(new Mensaje("producto actualizado"), HttpStatus.OK);
     }
